@@ -7,11 +7,12 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $contact = $_POST['contact'];
     $DOB = $_POST['DOB'];
+    $gender = $_POST['gender'];
     $password = $_POST['password'];
     $address = $_POST['address'];
 
-    $query = "INSERT INTO user ( first_name, last_name, email, contact, date_of_birth, password, address )
-    VALUES ( '$firstname', '$lastname', '$email', '$contact', '$DOB', '$password', '$address' )";
+    $query = "INSERT INTO user ( first_name, last_name, email, contact, date_of_birth, gender, password, address )
+    VALUES ( '$firstname', '$lastname', '$email', '$contact', '$DOB', $gender, '$password', '$address' )";
 
     $run = mysqli_query(mysql: $conn, query: $query);
     if ($run) {
