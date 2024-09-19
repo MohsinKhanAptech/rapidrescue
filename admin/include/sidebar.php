@@ -9,6 +9,7 @@
             <a href="driver.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i> Drivers</a>
             <a href="dispatch.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i> Dispatch Control</a>
             <a href="monitoring.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Monitoring</a>
+            <a href="feedback.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>feedbacks</a>
         </div>
     </nav>
 </div>
