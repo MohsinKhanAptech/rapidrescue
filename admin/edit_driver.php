@@ -63,7 +63,7 @@ include "include/head.php";
                     </div>
                     <br>
                     <div class="col-12 d-flex">
-                        <input class="flex-grow-1 btn btn-primary" type="submit" name="submit" value="Create" class="btn m-2 ab">
+                        <input class="flex-grow-1 btn btn-primary" type="submit" name="submit" value="Update" class="btn m-2 ab">
                     </div>
                 </form>
             </div>
