@@ -5,11 +5,11 @@
 
 <body>
 
-    <div class="container-fluid pt-3">
-        <div class="container pt-5">
+    <div class="container-fluid d-flex justify-content-center align-items-center vw-100 vh-100">
+        <div class="container">
             <div class="row justify-content-center position-relative" style=" z-index: 1;">
                 <div class="col-lg-8">
-                    <div class="bg-white rounded p-5 m-5 mb-0">
+                    <div class="bg-white rounded p-5 m-5">
                         <form action="login_validate.php" method="post">
                             <div class="row g-3">
                                 <div class="col-12">
