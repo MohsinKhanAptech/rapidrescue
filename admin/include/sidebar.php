@@ -7,8 +7,8 @@
         <div class="navbar-nav w-100">
             <a href="ambulance.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i> Ambulances</a>
             <a href="driver.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i> Drivers</a>
-            <a href="Technicians.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Technicians</a>
-            <a href="Requests.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Requests</a>
+            <a href="technicians.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Technicians</a>
+            <a href="requests.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Requests</a>
             <a href="dispatch.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i> Dispatch</a>
             <a href="monitoring.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Monitoring</a>
             <a href="feedback.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>feedbacks</a>
