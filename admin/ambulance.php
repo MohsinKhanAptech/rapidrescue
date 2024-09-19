@@ -32,6 +32,8 @@ include "include/head.php";
             }
             ?>
             <div class="container-fluid pt-4 px-4">
+                <h1>Add Ambulance</h1>
+
                 <form method="POST" class="mt-4 mb-4">
                     <div class="col-12">
                         <input type="text" name="vehicle_number" class="form-control border border-white" placeholder="Enter current advance">
@@ -58,7 +60,6 @@ include "include/head.php";
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">ambulance id</th>
                                     <th scope="col">vehicle number</th>
                                     <th scope="col">equipment level</th>
@@ -75,7 +76,6 @@ include "include/head.php";
 
                                 while ($rows = mysqli_fetch_array($runn)) {
                                 ?> <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
 
                                         <td><?= $rows['ambulance_id'] ?></td>
                                         <td><?= $rows['vehicle_number'] ?></td>

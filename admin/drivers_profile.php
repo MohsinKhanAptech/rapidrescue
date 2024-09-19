@@ -33,6 +33,8 @@ include "include/head.php"; ?>
             }
             ?>
             <div class="container-fluid pt-4 px-4">
+                <h1>Add Drivers</h1>
+
                 <form method="POST" class="mt-4">
                     <div class="col-12">
                         <input type="text" name="first_name" class="form-control border border-white" placeholder="Enter first name">
@@ -57,14 +59,13 @@ include "include/head.php"; ?>
 
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
+                        <h6 class="mb-0">Drivers</h6>
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">Driver id</th>
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
@@ -82,7 +83,6 @@ include "include/head.php"; ?>
 
                                 while ($rows = mysqli_fetch_array($runn)) {
                                 ?> <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
 
                                         <td><?php echo $rows['driver_id'] ?></td>
                                         <td><?php echo $rows['first_name'] ?></td>
