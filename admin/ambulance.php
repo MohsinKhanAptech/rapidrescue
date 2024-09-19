@@ -58,13 +58,11 @@ include "include/head.php";
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">ambulance id</th>
                                     <th scope="col">vehicle number</th>
                                     <th scope="col">equipment level</th>
                                     <th scope="col">current advance</th>
                                     <th scope="col">Action</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,8 +73,6 @@ include "include/head.php";
 
                                 while ($rows = mysqli_fetch_array($runn)) {
                                 ?> <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-
                                         <td><?= $rows['ambulance_id'] ?></td>
                                         <td><?= $rows['vehicle_number'] ?></td>
                                         <td><?= $rows['equipment_level'] ?></td>
@@ -85,7 +81,6 @@ include "include/head.php";
                                             <a class="btn btn-sm btn-primary" href="delete_ambulance.php?id=<?= $rows['ambulance_id'] ?>">Delete</a>
                                             <a class="btn btn-sm btn-primary" href="edit_ambulance.php?id=<?= $rows['ambulance_id'] ?>">Edit</a>
                                         </td>
-
                                     </tr>
                                 <?php
                                 }
@@ -95,6 +90,7 @@ include "include/head.php";
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- Content End -->
 
