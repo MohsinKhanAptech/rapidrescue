@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-
     $query = "INSERT INTO admin ( name , email , password )
     VALUES ( '$name', '$email' , '$password' )";
 

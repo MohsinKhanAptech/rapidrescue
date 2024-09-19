@@ -32,25 +32,26 @@ include "include/head.php";
             }
             ?>
             <div class="container-fluid pt-4 px-4">
-                <h1>Add Ambulance</h1>
-
-                <form method="POST" class="mt-4 mb-4">
-                    <div class="col-12">
-                        <input type="text" name="vehicle_number" class="form-control border border-white" placeholder="Enter current advance">
-                    </div>
-                    <br>
-                    <div class="col-12">
-                        <input type="text" name="equipment_level" class="form-control border border-white" placeholder="Enter equipment level">
-                    </div>
-                    <br>
-                    <div class="col-12">
-                        <input type="text" name="current_advance" class="form-control border border-white bg-dark" placeholder="Enter current advance">
-                    </div>
-                    <br>
-                    <div class="col-12 d-flex">
-                        <input class="btn btn-primary flex-grow-1" type="submit" name="submit" value="Create" class="btn m-2 ab">
-                    </div>
-                </form>
+                <div class="bg-secondary text-center rounded p-4 mb-4">
+                    <h1>Ambulance</h1>
+                    <form method="POST" class="mt-4 mb-4">
+                        <div class="col-12">
+                            <input type="text" name="vehicle_number" class="form-control border border-white" placeholder="Enter current advance">
+                        </div>
+                        <br>
+                        <div class="col-12">
+                            <input type="text" name="equipment_level" class="form-control border border-white" placeholder="Enter equipment level">
+                        </div>
+                        <br>
+                        <div class="col-12">
+                            <input type="text" name="current_advance" class="form-control border border-white bg-dark" placeholder="Enter current advance">
+                        </div>
+                        <br>
+                        <div class="col-12 d-flex">
+                            <input class="btn btn-primary flex-grow-1" type="submit" name="submit" value="Create" class="btn m-2 ab">
+                        </div>
+                    </form>
+                </div>
 
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
