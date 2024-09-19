@@ -12,5 +12,6 @@ if (isset($_POST['submit'])) {
     $run = mysqli_query(mysql: $conn, query: $query);
     if ($run) {
         echo "<script>alert('Record Submitted!')</script>";
+        header('location:signin.php');
     }
 }

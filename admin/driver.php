@@ -80,8 +80,8 @@ include "include/head.php";
                                         <td><?= $rows['last_name'] ?></td>
                                         <td><?= $rows['contact'] ?></td>
                                         <td>
-                                            <a class="btn btn-sm btn-primary" href="delete_drivers_profile.php?id=<?= $rows['driver_id'] ?>">Delete</a>
-                                            <a class="btn btn-sm btn-primary" href="edit_drivers_profile.php?id=<?= $rows['driver_id'] ?>">Edit</a>
+                                            <a class="btn btn-sm btn-primary" href="delete_driver.php?id=<?= $rows['driver_id'] ?>" onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
+                                            <a class="btn btn-sm btn-primary" href="edit_driver.php?id=<?= $rows['driver_id'] ?>">Edit</a>
                                         </td>
                                     </tr>
                                 <?php

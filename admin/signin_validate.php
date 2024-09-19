@@ -1,5 +1,6 @@
 <?php
 include '../conn.php';
+include 'signinsession.php';
 session_start();
 
 if (isset($_POST['submit'])) {
@@ -12,7 +13,7 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($run) == 1) {
         $_SESSION['email'] = $row['user_id'];
         echo '<scrpit>alert("Record Submitted!")</script>';
-        header('location:../index.php');
+        header('location:ambulance.php');
     } else {
         echo "<script>alert('wrong email or password!')</script>";
     }

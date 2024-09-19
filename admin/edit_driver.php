@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
     $runn = mysqli_query($conn, $queryys);
 
     if ($runn) {
-        echo "<script>window.location.href='drivers_profile.php'</script>";
+        echo "<script>window.location.href='driver.php'</script>";
     } else {
         echo "<script>alert('Something went wrong please retry!')</script>";
     }

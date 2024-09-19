@@ -149,7 +149,7 @@ include "include/head.php";
                                         </td>
 
                                         <td>
-                                            <a class="btn btn-sm btn-primary" href="delete_technicians.php?id=<?= $rows['EMT_id'] ?>">Delete</a>
+                                            <a class="btn btn-sm btn-primary" href="delete_technicians.php?id=<?= $rows['EMT_id'] ?> " onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
                                             <a class="btn btn-sm btn-primary" href="edit_technicians.php?id=<?= $rows['EMT_id'] ?>">Edit</a>
                                         </td>
                                     </tr>

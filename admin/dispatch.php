@@ -81,7 +81,7 @@ include "include/head.php";
                                         <td><?= $rows['equipment_level'] ?></td>
                                         <td><?= $rows['current_advance'] ?></td>
                                         <td>
-                                            <a class="btn btn-sm btn-primary" href="delete_dispatch.php?id=<?= $rows['ambulance_id'] ?>">Delete</a>
+                                            <a class="btn btn-sm btn-primary" href="delete_dispatch.php?id=<?= $rows['ambulance_id'] ?>" onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
                                         </td>
                                     </tr>
                                 <?php
