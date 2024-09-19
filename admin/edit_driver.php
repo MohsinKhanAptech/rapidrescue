@@ -23,22 +23,23 @@ if (isset($_POST["submit"])) {
 
     $queryys = "UPDATE driver SET first_name = '$first_name', last_name = '$last_name', contact = '$contact' WHERE driver_id = '$id'";
 
-
     $runn = mysqli_query($conn, $queryys);
 
     if ($runn) {
         echo "<script>window.location.href='drivers_profile.php'</script>";
+    } else {
+        echo "<script>alert('Something went wrong please retry!')</script>";
     }
 }
 ?>
+
 <?php
 include "../conn.php";
-
-include "include/head.php"; ?>
+include "include/head.php";
+?>
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
-
 
         <?php include "include/sidebar.php"; ?>
 
@@ -54,27 +55,22 @@ include "include/head.php"; ?>
                     </div>
                     <br>
                     <div class="col-12">
-                        <input type="text" name="last_name" class="form-control border border-white" placeholder="Edit last name"
-                            value="<?php echo $data['last_name'] ?>">
+                        <input type="text" name="last_name" class="form-control border border-white" placeholder="Edit last name" value="<?php echo $data['last_name'] ?>">
                     </div>
                     <br>
                     <div class="col-12">
-                        <input type="text" name="contact" class="form-control border border-white bg-dark" placeholder="Edit contact"
-                            value="<?php echo $data['contact'] ?>">
+                        <input type="text" name="contact" class="form-control border border-white bg-dark" placeholder="Edit contact" value="<?php echo $data['contact'] ?>">
                     </div>
                     <br>
-                    <div class="col-3">
-                        <input type="submit" name="submit" value="Create" class="btn m-2 ab">
+                    <div class="col-12 d-flex">
+                        <input class="flex-grow-1 btn btn-primary" type="submit" name="submit" value="Create" class="btn m-2 ab">
                     </div>
                 </form>
-
             </div>
+
         </div>
         <!-- Content End -->
 
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <?php include "include/scripts.php"; ?>
