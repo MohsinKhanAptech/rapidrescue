@@ -5,7 +5,7 @@
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid d-flex justify-content-center align-items-center vw-100 vh-100">
         <div class="container">
             <div class="row justify-content-center position-relative" style="z-index: 1;">
                 <div class="col-lg-8">
