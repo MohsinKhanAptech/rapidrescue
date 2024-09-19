@@ -32,6 +32,8 @@ include "include/head.php";
             }
             ?>
             <div class="container-fluid pt-4 px-4">
+                <h1>Add Ambulance</h1>
+
                 <form method="POST" class="mt-4 mb-4">
                     <div class="col-12">
                         <input type="text" name="vehicle_number" class="form-control border border-white" placeholder="Enter current advance">
