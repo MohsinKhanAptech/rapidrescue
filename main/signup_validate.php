@@ -12,10 +12,12 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
 
     $query = "INSERT INTO user ( first_name, last_name, email, contact, date_of_birth, gender, password, address )
-    VALUES ( '$firstname', '$lastname', '$email', '$contact', '$DOB', $gender, '$password', '$address' )";
+    VALUES ( '$firstname', '$lastname', '$email', '$contact', '$DOB', '$gender', '$password', '$address' )";
 
     $run = mysqli_query(mysql: $conn, query: $query);
     if ($run) {
-        echo "<script>alert('Record Submitted!')</script>";
+        header('location:index.html');
+    } else {
+        echo '<scrpit>alert("Something went wrong!")</script>';
     }
 }

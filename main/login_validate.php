@@ -12,9 +12,10 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_array($run);
     if (mysqli_num_rows($run) == 1) {
         $_SESSION['email'] = $row['user_id'];
-        echo '<scrpit>alert("Record Submitted!")</script>';
-        header('location:../index.php');
+        // echo '<scrpit>alert("Record Submitted!")</script>';
+        header('location:index.php');
     } else {
         echo "<script>alert('wrong email or password!')</script>";
+        header('location:login.php');
     }
 }
