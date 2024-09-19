@@ -1,23 +1,22 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "rapidrescue");
+include '../../../conn.php';
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $name = $_POST['f_name'];
     $email = $_POST['f_email'];
     $subject = $_POST['f_subject'];
     $message = $_POST['f_message'];
- 
+
     $query = "INSERT INTO feedback(name,email,subject,feedback) VALUES ( '$name', '$email', '$subject','$message')";
     $runn = mysqli_query($conn, $query);
 
-    if($runn){
-        echo"
+    if ($runn) {
+        echo "
         <script>
         alert('Form submited')
         </script>
         ";
     }
-
 }
 ?>
 <!-- Feedback Start -->
