@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($run) === 1 && password_verify($password, $hash)) {
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['user_name'] = $row['first_name'];
+        $_SESSION['user_email'] = $row['email'];
         header('location:index.php');
     } else {
         echo "<script>alert('wrong email or password!')</script>";

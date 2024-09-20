@@ -12,8 +12,8 @@ if (isset($_POST['submit'])) {
 	$password = $_POST['password'];
 	$address = $_POST['address'];
 	$images = $_FILES['images']['name'];
-    $imgpath = $_FILES['images']['tmp_name'];
-    move_uploaded_file($imgpath, 'user_images/' . $images);
+	$imgpath = $_FILES['images']['tmp_name'];
+	move_uploaded_file($imgpath, 'user_images/' . $images);
 
 	$query = "SELECT * FROM user WHERE email = '$email'";
 	$run = mysqli_query($conn, $query);
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
 		echo "<script>window.location.href='signup.php'</script>";
 	}
 
-	$query = "INSERT INTO user (first_name, last_name, email, contact, password, date_of_birth, gender, address, Images) 
+	$query = "INSERT INTO user (first_name, last_name, email, contact, password, date_of_birth, gender, address, Images)
               VALUES ('$first_name', '$last_name', '$email', '$contact', '$password', '$dob', '$gender', '$address', '$images')";
 	$run = mysqli_query(mysql: $conn, query: $query);
 	if ($run) {
