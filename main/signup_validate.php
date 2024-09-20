@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 	}
 
 	$query = "INSERT INTO user (first_name, last_name, email, contact, password, date_of_birth, gender, address, Images)
-              VALUES ('$first_name', '$last_name', '$email', '$contact', '$password', '$dob', '$gender', '$address', '$images')";
+              VALUES ('$firstname', '$lastname', '$email', '$contact', '$password', '$dob', '$gender', '$address', '$images')";
 	$run = mysqli_query(mysql: $conn, query: $query);
 	if ($run) {
 		header('location:signin.php');
