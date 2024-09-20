@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../conn.php";
 
 if (isset($_POST['submit'])) {
@@ -10,9 +11,6 @@ if (isset($_POST['submit'])) {
 	$gender = $_POST['gender'];
 	$password = $_POST['password'];
 	$address = $_POST['address'];
-	$image = $_FILES['images']['name'];
-	$imgpath = $_FILES['images']['tmp_name'];
-	move_uploaded_file($imgpath, 'user_images/' . $image);
 
 	$query = "SELECT * FROM user WHERE email = '$email'";
 
@@ -29,8 +27,8 @@ if (isset($_POST['submit'])) {
 		header('location:login.php');
 	}
 
-	$query = "INSERT INTO user ( first_name, last_name, email, contact, date_of_birth, gender, password, address, image )
-    VALUES ( '$firstname', '$lastname', '$email', '$contact', '$DOB', '$gender', '$password', '$address', '$image' )";
+	$query = "INSERT INTO user ( first_name, last_name, email, contact, date_of_birth, gender, password, address )
+    VALUES ( '$firstname', '$lastname', '$email', '$contact', '$DOB', '$gender', '$password', '$address' )";
 
 	$run = mysqli_query(mysql: $conn, query: $query);
 	if ($run) {
