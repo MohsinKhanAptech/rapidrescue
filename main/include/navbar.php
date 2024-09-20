@@ -4,8 +4,8 @@ include "../conn.php";
 if (isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
     $query = "SELECT * FROM user WHERE user_id = $id";
-    $run = mysqli_query($con, $query);
-    $row = mysqli_fetch_array($run1);
+    $run = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($run);
 } else {
     // header('location:signin.php');
 }
@@ -29,8 +29,9 @@ if (isset($_SESSION['user_id'])) {
                     <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
                     <?php if (isset($_SESSION['user_id'])) { ?>
+                        <a href="about.php" class="nav-item nav-link text-danger">Emergency</a>
                         <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="user_images/<?= $row1['images'] ?>" alt="user profile picture"></a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><?= $row['first_name']; ?></a>
                             <div class="dropdown-menu m-0">
                                 <a href="profile.php" class="dropdown-item">Profile</a>
                                 <a href="logout.php" class="dropdown-item">Logout</a>

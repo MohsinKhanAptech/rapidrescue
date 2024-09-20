@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $run = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($run);
 
-    $hash = $row('password');
+    $hash = $row['password'];
 
     if (mysqli_num_rows($run) === 1 && password_verify($password, $hash)) {
         $_SESSION['user_id'] = $row['user_id'];
