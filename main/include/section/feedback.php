@@ -1,5 +1,5 @@
 <?php
-include '../../../conn.php';
+include '../conn.php';
 
 if (isset($_POST['submit'])) {
     $name = $_POST['f_name'];
@@ -10,12 +10,8 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO feedback(name,email,subject,feedback) VALUES ( '$name', '$email', '$subject','$message')";
     $runn = mysqli_query($conn, $query);
 
-    if ($runn) {
-        echo "
-        <script>
-        alert('Form submited')
-        </script>
-        ";
+    if (!$runn) {
+        echo "<script>alert('Something went wrong')</script>";
     }
 }
 ?>
