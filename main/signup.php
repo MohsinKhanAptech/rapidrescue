@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'include/head.php'; ?>
+<?php include 'include/head.php'; 
+
+?>
 
 <body>
 
@@ -10,7 +12,7 @@
             <div class="row justify-content-center position-relative" style="z-index: 1;">
                 <div class="col-lg-8">
                     <div class="bg-white rounded p-5">
-                        <form action="signup_validate.php" method="post">
+                        <form action="signup_validate.php" method="post" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="firstname" class="form-control bg-light border-0" required placeholder="First Name" style="height: 55px;">
@@ -40,6 +42,9 @@
                                 </div>
                                 <div class="col-12">
                                     <input type="text" name="address" class="form-control bg-light border-0" required placeholder="Your Address" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="file" name="images" class="form-control bg-light border-0" required placeholder="Your Address" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
                                     <input name="submit" type="submit" class="btn btn-primary w-100 py-3" value="Sign-up">
