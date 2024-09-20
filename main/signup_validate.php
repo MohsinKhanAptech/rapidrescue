@@ -13,18 +13,18 @@ if (isset($_POST['submit'])) {
 	$address = $_POST['address'];
 
 	$query = "SELECT * FROM user WHERE email = '$email'";
+	$run = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($run);
 
-	$row = mysqli_fetch_array(mysqli_query($conn, $query));
-
-	if ($row > 0) {
+	if (mysqli_num_rows($run) > 0) {
 		echo '<scrpit>alert("Email is already registered to another account!")</script>';
-		header('location:singup.php');
+		echo "<script>window.location.href='singup.php'</script>";
 	}
 
 	$password = password_hash($password, PASSWORD_BCRYPT);
 	if (!$password) {
 		echo "<script>alert('password hashing error, please try a different password!')</script>";
-		header('location:login.php');
+		echo "<script>window.location.href='signup.php'</script>";
 	}
 
 	$query = "INSERT INTO user ( first_name, last_name, email, contact, date_of_birth, gender, password, address )
@@ -32,8 +32,9 @@ if (isset($_POST['submit'])) {
 
 	$run = mysqli_query(mysql: $conn, query: $query);
 	if ($run) {
-		header('location:index.php');
+		header('location:signin.php');
 	} else {
 		echo '<scrpit>alert("Something went wrong!")</script>';
+		echo "<script>window.location.href='signup.php'</script>";
 	}
 }
