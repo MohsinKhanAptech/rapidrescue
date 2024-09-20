@@ -11,7 +11,8 @@ if (isset($_POST['submit'])) {
     $run = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($run);
     if (mysqli_num_rows($run) == 1) {
-        $_SESSION['email'] = $row['user_id'];
+        $_SESSION['admin_name'] = $row['name'];
+        $_SESSION['admin_email'] = $row['email'];
         echo '<scrpit>alert("Record Submitted!")</script>';
         header('location:ambulance.php');
     } else {
