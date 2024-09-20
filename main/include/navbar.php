@@ -1,3 +1,16 @@
+<?php
+session_start();
+include "conn.php";
+if (isset($_SESSION['user_id'])) {
+    $id = $_SESSION['user_id'];
+    $query = "SELECT * FROM user WHERE user_id = $id";
+    $run = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($run1);
+} else {
+    // header('location:signin.php');
+}
+?>
+
 <!-- Navbar Start -->
 <div class="container-fluid sticky-top bg-white shadow-sm">
     <div class="container">
@@ -15,19 +28,18 @@
                     <!-- <a href="price.html" class="nav-item nav-link">Pricing</a> -->
                     <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
-                    <a href="login.php" class="nav-item nav-link">Login</a>
-                    <a href="signup.php" class="nav-item nav-link">Signup</a>
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                            <a href="team.html" class="dropdown-item">The Team</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="appointment.html" class="dropdown-item">Appointment</a>
-                            <a href="search.html" class="dropdown-item">Search</a>
+                    <?php if (isset($_SESSION['user_id'])) { ?>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="user_images/<?= $row1['images'] ?>" alt="user profile picture"></a>
+                            <div class="dropdown-menu m-0">
+                                <a href="profile.php" class="dropdown-item">Profile</a>
+                                <a href="logout.php" class="dropdown-item">Logout</a>
+                            </div>
                         </div>
-                    </div> -->
+                    <?php } else { ?>
+                        <a href="signin.php" class="nav-item nav-link">Signin</a>
+                        <a href="signup.php" class="nav-item nav-link">Signup</a>
+                    <?php } ?>
                 </div>
             </div>
         </nav>
