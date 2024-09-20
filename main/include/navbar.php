@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conn.php";
+include "../conn.php";
 if (isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
     $query = "SELECT * FROM user WHERE user_id = $id";
