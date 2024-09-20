@@ -28,9 +28,9 @@
                                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
+                            <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                                 <a href="">Forgot Password?</a>
-                            </div>
+                            </div> -->
                             <input type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4" value="sign in">
                             <!-- <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p> -->
                         </form>
