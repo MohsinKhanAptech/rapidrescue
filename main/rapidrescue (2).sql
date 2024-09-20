@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2024 at 11:54 AM
+-- Generation Time: Sep 20, 2024 at 05:08 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,6 +102,13 @@ CREATE TABLE `feedback` (
   `feedback` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `name`, `email`, `subject`, `feedback`) VALUES
+(1, 'adnan', 'adnanabid@gmail.com', 'rapid rescue', 'exellent service');
+
 -- --------------------------------------------------------
 
 --
@@ -117,15 +124,18 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `date_of_birth` date NOT NULL,
   `gender` varchar(10) NOT NULL,
-  `address` varchar(500) NOT NULL
+  `address` varchar(500) NOT NULL,
+  `Images` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact`, `password`, `date_of_birth`, `gender`, `address`) VALUES
-(4, 'bilal', 'bilal', 'bilal@gmail.com', '03131234567', '123', '2024-09-19', 'male', '123');
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact`, `password`, `date_of_birth`, `gender`, `address`, `Images`) VALUES
+(4, 'bilal', 'bilal', 'bilal@gmail.com', '03131234567', '123', '2024-09-19', 'male', '123', ''),
+(5, 'adnan', 'abid', 'adnanabid@gmail.com', '032171733302', '$2y$10$WTgHHuW0v5a4ucVYwcgcKOnx3kwQoWGAx0.bw6vGFMPLe.ZAZKu4u', '2024-09-20', 'male', 'karachi', ''),
+(11, 'mohsin', 'khan', 'mohsin@gmail.com', '09173969', '$2y$10$jmpnKVgY73yM4astz4XQyeOvOBTNT/QhW.Hsbs2KWl8epgS4l7aoq', '2024-09-20', 'Male', 'karachi', 'download.jfif');
 
 --
 -- Indexes for dumped tables
@@ -212,13 +222,13 @@ ALTER TABLE `emt`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

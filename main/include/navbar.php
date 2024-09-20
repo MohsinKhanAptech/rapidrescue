@@ -34,7 +34,7 @@ if (isset($_SESSION['user_id'])) {
                        
                             <img class="nav-link dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" src="<?php echo "user_images/". $row['Images'];?>" width="50" height="100" alt="profile">
                             <div class="dropdown-menu m-0">
-                                <a href="profile.php" class="dropdown-item">Profile</a>
+                                <a href="editprofile.php?editid=<?php echo htmlspecialchars($row['user_id']); ?>" class="dropdown-item">Profile</a>
                                 <a href="logout.php" class="dropdown-item">Logout</a>
                             </div>
                         </div>

@@ -1,14 +1,22 @@
 <?php
-include "conn.php";
+include "../conn.php";
 
-$id = $_GET['editid'];
-$query = "SELECT * FROM user WHERE user_id = $id";
-$run = mysqli_query($con, $query);
-$row = mysqli_fetch_array($run);
+// Sanitize the editid parameter to ensure it's an integer
+$id = isset($_GET['editid']) ? intval($_GET['editid']) : 0;
 
-// Error handling for query
-if (!$run) {
-    die("Error fetching user data: " . mysqli_error($con));
+if ($id > 0) {
+    // Fetch user data for editing
+    $query = "SELECT * FROM user WHERE user_id = $id";
+    $run = mysqli_query($conn, $query);
+
+    // Error handling for query execution
+    if (!$run) {
+        die("Error fetching user data: " . mysqli_error($conn)); // Show the SQL error message
+    }
+
+    $row = mysqli_fetch_array($run); // Fetch data if the query runs successfully
+} else {
+    die("Invalid user ID.");
 }
 
 // Profile Edit Button (including Image Change)
@@ -23,11 +31,13 @@ if (isset($_POST['editprofile'])) {
     $address = $_POST['address'];
 
     // Handle Image Upload
-    $image = $row['images']; // Existing image
+    $image = $row['images']; // Use existing image if no new image is uploaded
     if (!empty($_FILES['images']['name'])) {
         $image = $_FILES['images']['name'];
         $tmppath = $_FILES['images']['tmp_name'];
-        move_uploaded_file($tmppath, 'user_images/' . $image);
+        if (!move_uploaded_file($tmppath, 'user_images/'.$image)) {
+            die("Error uploading image");
+        }
     }
 
     // Update Profile Data and Image
@@ -43,7 +53,9 @@ if (isset($_POST['editprofile'])) {
                         images = '$image' 
                     WHERE user_id = $id;";
     
-    $run2 = mysqli_query($con, $updateQuery);
+    $run2 = mysqli_query($conn, $updateQuery);
+
+    // Error handling for the update query
     if ($run2) {
         echo "
         <script>
@@ -54,7 +66,7 @@ if (isset($_POST['editprofile'])) {
     } else {
         echo "
         <script>
-        alert('Error updating profile: " . mysqli_error($con) . "');
+        alert('Error updating profile: " . mysqli_error($conn) . "');
         </script>
         ";
     }
@@ -104,87 +116,79 @@ if (isset($_POST['editprofile'])) {
         <div class="col-md-4 m-auto">
             <form method="POST" enctype="multipart/form-data">
                 <div class="text-center">
-                    <img class="img-account-profile rounded-circle" src="../user_images/<?php echo $row['images']; ?>" width="220" height="220" alt="">
+                    <img class="img-account-profile rounded-circle" src="user_images/<?php echo $row['Images']; ?>" width="220" height="220" alt="User Image">
                     <br><br>
                     <input type="file" name="images"><br><br>
                 </div>
-            </form>
         </div>
 
         <div class="col-md-8 border-right">
-            <form method="POST">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right text-primary-emphasis fw-semibold">Edit Profile</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="text" name="fname" required spellcheck="false" value="<?php echo $row['first_name']; ?>">
-                                <label class="labels">First Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="text" name="lname" required spellcheck="false" value="<?php echo $row['last_name']; ?>">
-                                <label class="labels">Last Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="email" name="email" required spellcheck="false" value="<?php echo $row['email']; ?>">
-                                <label class="labels">Email</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="text" name="contact" required spellcheck="false" value="<?php echo $row['contact']; ?>">
-                                <label class="labels">Contact</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="text" name="password" required spellcheck="false" value="<?php echo $row['password']; ?>">
-                                <label class="labels">Password</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="date" name="dob" required spellcheck="false" value="<?php echo $row['date_of_birth']; ?>">
-                                <label class="labels">Date of Birth</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <select name="gender" required>
-                                    <option value="" disabled>Select Gender</option>
-                                    <option value="Male" <?php if($row['gender'] == 'Male') echo 'selected'; ?>>Male</option>
-                                    <option value="Female" <?php if($row['gender'] == 'Female') echo 'selected'; ?>>Female</option>
-                                    <option value="Other" <?php if($row['gender'] == 'Other') echo 'selected'; ?>>Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-4">
-                            <div class="input-field">
-                                <input type="text" name="address" required spellcheck="false" value="<?php echo $row['address']; ?>">
-                                <label class="labels">Address</label>
-                            </div>
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right text-primary-emphasis fw-semibold">Edit Profile</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="text" name="fname" required spellcheck="false" value="<?php echo $row['first_name']; ?>">
+                            <label class="labels">First Name</label>
                         </div>
                     </div>
-                    <div class="mt-5 text-center">
-                        <input class="btn btn-primary" type="submit" value="Edit Profile" name="editprofile">
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="text" name="lname" required spellcheck="false" value="<?php echo $row['last_name']; ?>">
+                            <label class="labels">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="email" name="email" required spellcheck="false" value="<?php echo $row['email']; ?>">
+                            <label class="labels">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="text" name="contact" required spellcheck="false" value="<?php echo $row['contact']; ?>">
+                            <label class="labels">Contact</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="text" name="password" required spellcheck="false" value="<?php echo $row['password']; ?>">
+                            <label class="labels">Password</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="date" name="dob" required spellcheck="false" value="<?php echo $row['date_of_birth']; ?>">
+                            <label class="labels">Date of Birth</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <select name="gender" required>
+                                <option value="" disabled>Select Gender</option>
+                                <option value="Male" <?php if($row['gender'] == 'Male') echo 'selected'; ?>>Male</option>
+                                <option value="Female" <?php if($row['gender'] == 'Female') echo 'selected'; ?>>Female</option>
+                                <option value="Other" <?php if($row['gender'] == 'Other') echo 'selected'; ?>>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <div class="input-field">
+                            <input type="text" name="address" required spellcheck="false" value="<?php echo $row['address']; ?>">
+                            <label class="labels">Address</label>
+                        </div>
                     </div>
                 </div>
-            </form>
+                <div class="mt-5 text-center">
+                    <input class="btn btn-primary" type="submit" value="Edit Profile" name="editprofile">
+                </div>
+            </div>
+            </form> <!-- Closing the form here -->
         </div>
     </div>
-</div> 
-<!-- footer start
- <?php
- include "footer.php";
- 
- ?>
-footer end -->
+</div>
 
 </body>
 </html>
