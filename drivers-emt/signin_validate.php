@@ -17,5 +17,6 @@ if (isset($_POST['submit'])) {
         echo "<script>window.location.href='index.php'</script>";
     } else {
         echo "<script>alert('wrong email or password!')</script>";
+        echo "<script>window.location.href='signin.php'</script>";
     }
 }
