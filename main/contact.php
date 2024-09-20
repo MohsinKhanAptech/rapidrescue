@@ -52,25 +52,42 @@
                     </div>
                 </div>
             </div>
+
+            <?php
+            if (isset($_POST['submit'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $subject = $_POST['subject'];
+                $message = $_POST['message'];
+                $query = "INSERT INTO contact (name, email, subject , message) VALUES ('$name', '$email', '$subject' , '$message')";
+                $run = mysqli_query($conn, $query);
+
+                if ($run) {
+                    // echo "<script>alert('Thanks for contacting us !')</script>";
+                } else {
+                    echo "<script>alert('Something went wrong please retry!')</script>";
+                }
+            }
+            ?>
             <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
                 <div class="col-lg-8">
                     <div class="bg-white rounded p-5 m-5 mb-0">
-                        <form>
+                        <form method="post">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" name="name" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
+                                    <input type="email" name="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Subject" style="height: 55px;">
+                                    <input type="text" name="subject" class="form-control bg-light border-0" placeholder="Subject" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
+                                    <textarea name="message" class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" name="submit" value="Send Message">Send Message</button>
                                 </div>
                             </div>
                         </form>

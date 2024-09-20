@@ -72,7 +72,6 @@ include "include/head.php";
                 $imgname = $_FILES['certificate']['name'];
                 $mfile = $_FILES['certificate']['tmp_name'];
                 move_uploaded_file($mfile, "img/" . $imgname);
-
                 $query = "INSERT INTO emt (first_name, last_name , contact, email , certificate) VALUES ('$first_name', '$last_name' , '$contact' , '$email', '$imgname')";
                 $run = mysqli_query($conn, $query);
 
