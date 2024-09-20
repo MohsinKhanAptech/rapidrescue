@@ -23,6 +23,10 @@
                                 </div>
                                 <div class="col-12">
                                     <input name="submit" type="button" onclick="window.location.href='index.php'" class="btn btn-light w-100 py-3" value="Cancel">
+                                    <br>
+                                    <br>
+                                    <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
+
                                 </div>
                             </div>
                         </form>
