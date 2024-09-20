@@ -29,10 +29,10 @@ if (isset($_SESSION['user_id'])) {
                     <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
                     <?php if (isset($_SESSION['user_id'])) { ?>
-                        <a href="about.php" class="nav-item nav-link text-danger">Emergency</a>
+                        <a href="request.php" class="nav-item nav-link text-danger">Emergency</a>
                         <div class="nav-item dropdown">
-                       
-                            <img class="nav-link dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" src="<?php echo "user_images/". $row['Images'];?>" width="50" height="100" alt="profile">
+
+                            <img class="nav-link dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" src="<?php echo "user_images/" . $row['Images']; ?>" width="50" height="100" alt="profile">
                             <div class="dropdown-menu m-0">
                                 <a href="editprofile.php?editid=<?php echo htmlspecialchars($row['user_id']); ?>" class="dropdown-item">Profile</a>
                                 <a href="logout.php" class="dropdown-item">Logout</a>

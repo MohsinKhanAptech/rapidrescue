@@ -22,5 +22,4 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('wrong email or password!')</script>";
         echo "<script>window.location.href='signin.php'</script>";
     }
-    echo '<h1>dookie</h1>';
 }
