@@ -11,7 +11,8 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_array($run);
 
     if (mysqli_num_rows($run) === 1) {
-        $_SESSION['emt_name'] = $row['name'];
+        $_SESSION['emt_id'] = $row['driver_id'];
+        $_SESSION['emt_name'] = $row['first_name'];
         $_SESSION['emt_contact'] = $row['contact'];
         echo '<scrpit>alert("Record Submitted!")</script>';
         echo "<script>window.location.href='index.php'</script>";
