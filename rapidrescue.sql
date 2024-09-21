@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 09:07 AM
+-- Generation Time: Sep 21, 2024 at 10:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,6 +56,48 @@ CREATE TABLE `ambulances` (
   `latitude` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ambulances`
+--
+
+INSERT INTO `ambulances` (`ambulance_id`, `vehicle_number`, `equipment_level`, `current_advance`, `longitude`, `latitude`) VALUES
+(1, 'test', 'test', 'test', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `chat_id` int(11) NOT NULL,
+  `admin_id` int(11) DEFAULT NULL,
+  `driver_id` int(11) DEFAULT NULL,
+  `chat` text DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `contact_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(500) NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contact_id`, `name`, `email`, `subject`, `message`) VALUES
+(1, 'gj', 'jg@gmail.com', 'hg', 'gh');
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +109,7 @@ CREATE TABLE `driver` (
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `contact` varchar(100) NOT NULL,
+  `ambulance_id` int(11) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -74,8 +117,8 @@ CREATE TABLE `driver` (
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`driver_id`, `first_name`, `last_name`, `contact`, `password`) VALUES
-(1, 'saad', 'driver', '12345', '12345');
+INSERT INTO `driver` (`driver_id`, `first_name`, `last_name`, `contact`, `ambulance_id`, `password`) VALUES
+(1, 'saad', 'driver', '12345', 0, '12345');
 
 -- --------------------------------------------------------
 
@@ -199,6 +242,20 @@ ALTER TABLE `ambulances`
   ADD PRIMARY KEY (`ambulance_id`);
 
 --
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`chat_id`),
+  ADD KEY `admin_id` (`admin_id`),
+  ADD KEY `driver_id` (`driver_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`contact_id`);
+
+--
 -- Indexes for table `driver`
 --
 ALTER TABLE `driver`
@@ -250,7 +307,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `ambulances`
 --
 ALTER TABLE `ambulances`
-  MODIFY `ambulance_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ambulance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `driver`
@@ -291,6 +360,13 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`),
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`);
 
 --
 -- Constraints for table `emergency_requests`
