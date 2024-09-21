@@ -21,7 +21,7 @@ include "include/head.php";
                 $vehicle_number = $_POST['vehicle_number'];
                 $equipment_level = $_POST['equipment_level'];
                 $current_advance = $_POST['price/km'];
-                $query = "INSERT INTO ambulances (vehicle_number, equipment_level, current_advance) VALUES ('$vehicle_number', '$equipment_level', '$current_advance')";
+                $query = "INSERT INTO ambulances (vehicle_number, equipment_level, price/km) VALUES ('$vehicle_number', '$equipment_level', '$current_advance')";
                 $run = mysqli_query($conn, $query);
 
                 if ($run) {
