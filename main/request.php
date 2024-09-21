@@ -9,11 +9,11 @@ include '../conn.php';
 $user_id = $_SESSION['user_id'];
 
 $query = "SELECT * FROM `medical_profile` WHERE `user_id` = '$user_id'";
-$run = mysqli_query($conn,$query );
+$run = mysqli_query($conn, $query);
 $row = mysqli_fetch_array($run);
 
 if (mysqli_num_rows($run) === 0) {
-    header("location:medical_profile.php");
+	header("location:medical_profile.php");
 }
 
 ?>
@@ -41,7 +41,7 @@ if (mysqli_num_rows($run) === 0) {
 									<input type="text" name="pickup_address" class="form-control bg-light border-0 p-2" required placeholder="Pickup Address">
 								</div>
 								<div class="col-12">
-									<select name="requst_type" class="form-control bg-light border-0 p-2">
+									<select name="request_type" class="form-control bg-light border-0 p-2">
 										<option value="normal">Non-Emergency</option>
 										<option value="emergency">Emergency</option>
 									</select>
