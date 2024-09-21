@@ -11,6 +11,7 @@
             <a href="requests.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Requests</a>
             <a href="dispatch.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i> Dispatch</a>
             <a href="monitoring.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Monitoring</a>
+            <a href="medical_profile.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Med profile</a>
             <a href="contact.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Contacts</a>
             <a href="feedback.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>feedbacks</a>
         </div>
