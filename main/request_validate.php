@@ -8,10 +8,10 @@ if (isset($_POST['submit'])) {
 	$hospital_address = $_POST['hospital_address'];
 	$contact = $_POST['contact'];
 	$pickup_address = $_POST['pickup_address'];
-	$requst_type = $_POST['requst_type'];
+	$request_type = $_POST['request_type'];
 
-	$query = "INSERT INTO `emergency_requests`(`user_id`, `hospital_name`, `hospital_address`, `contact`, `pickup_address`, `requst_type`)
-	VALUES ('$user_id','$hospital_name','$hospital_address','$contact','$pickup_address','$requst_type')";
+	$query = "INSERT INTO `emergency_requests`(`user_id`, `hospital_name`, `hospital_address`, `contact`, `pickup_address`, `request_type`)
+	VALUES ('$user_id','$hospital_name','$hospital_address','$contact','$pickup_address','$request_type')";
 	$run = mysqli_query($conn, $query);
 
 	if ($run) {
