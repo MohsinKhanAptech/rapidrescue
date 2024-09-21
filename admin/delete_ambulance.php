@@ -3,7 +3,7 @@ include "../conn.php";
 
 $id = $_GET['id'];
 
-$query = "DELETE FROM ambulances WHERE ambulance_id = $id";
+$query = "DELETE FROM ambulances WHERE ambulance_id = '$id'";
 
 $runn = mysqli_query($conn, $query);
 

@@ -83,6 +83,7 @@ include "include/head.php";
                                         <td>
                                             <a class="btn btn-sm btn-primary" href="delete_ambulance.php?id=<?= $rows['ambulance_id'] ?> " onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
                                             <a class="btn btn-sm btn-primary" href="edit_ambulance.php?id=<?= $rows['ambulance_id'] ?>">Edit</a>
+                                            <a class="btn btn-sm btn-primary" href="ambulance_location.php?id=<?= $rows['ambulance_id'] ?>">View on map</a>
                                         </td>
                                     </tr>
                                 <?php

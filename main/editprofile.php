@@ -167,9 +167,9 @@ if (isset($_POST['editprofile'])) {
                             <div class="input-field">
                                 <select name="gender" required>
                                     <option value="" disabled>Select Gender</option>
-                                    <option value="Male" <?php if ($row['gender'] == 'Male') echo 'selected'; ?>>Male</option>
-                                    <option value="Female" <?php if ($row['gender'] == 'Female') echo 'selected'; ?>>Female</option>
-                                    <option value="Other" <?php if ($row['gender'] == 'Other') echo 'selected'; ?>>Other</option>
+                                    <option value="male" <?php if ($row['gender'] == 'male') echo 'selected'; ?>>Male</option>
+                                    <option value="female" <?php if ($row['gender'] == 'female') echo 'selected'; ?>>Female</option>
+                                    <option value="other" <?php if ($row['gender'] == 'other') echo 'selected'; ?>>Other</option>
                                 </select>
                             </div>
                         </div>
