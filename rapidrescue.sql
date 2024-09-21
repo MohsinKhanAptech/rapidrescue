@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 08:20 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Sep 21, 2024 at 08:40 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -52,7 +52,7 @@ CREATE TABLE `ambulances` (
   `vehicle_number` varchar(255) NOT NULL,
   `equipment_level` varchar(255) NOT NULL,
   `current_advance` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `driver` (
   `last_name` varchar(100) NOT NULL,
   `contact` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `driver`
@@ -89,14 +89,14 @@ CREATE TABLE `emergency_requests` (
   `hospital_address` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `pickup_address` varchar(255) NOT NULL,
-  `requst_type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `request_type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `emergency_requests`
 --
 
-INSERT INTO `emergency_requests` (`request_id`, `user_id`, `request_time`, `hospital_name`, `hospital_address`, `contact`, `pickup_address`, `requst_type`) VALUES
+INSERT INTO `emergency_requests` (`request_id`, `user_id`, `request_time`, `hospital_name`, `hospital_address`, `contact`, `pickup_address`, `request_type`) VALUES
 (1, 12, '2024-09-21 04:50:07', 'jinnah', 'sadar', '03123456789', 'sadar', 'emergency'),
 (2, 12, '2024-09-21 05:26:41', 'jinnah', 'sadar', '03123456789', 'sadar', 'normal'),
 (3, 12, '2024-09-21 06:08:36', 'jinnah', 'sadar', '03123456789', 'sadar', 'emergency');
@@ -114,7 +114,7 @@ CREATE TABLE `emt` (
   `certificate` varchar(255) NOT NULL,
   `contact` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ CREATE TABLE `feedback` (
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `feedback` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedback`
@@ -149,7 +149,7 @@ CREATE TABLE `medical_profile` (
   `medical_history` varchar(500) NOT NULL,
   `allergies` varchar(255) NOT NULL,
   `emergency_contact` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,7 @@ CREATE TABLE `user` (
   `gender` varchar(10) NOT NULL,
   `address` varchar(500) NOT NULL,
   `Images` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
