@@ -30,6 +30,16 @@ if (isset($_POST['editprofile'])) {
     $gender = $_POST['gender'];
     $address = $_POST['address'];
 
+    $query12 = "SELECT * FROM user WHERE `user_id` = '$id";
+    $run12 = mysqli_query($conn, $query12);
+    $row12 = mysqli_fetch_assoc($run12);
+
+    if (isset($password)) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    } else {
+        $password = $row12['password'];
+    }
+
     // Handle Image Upload
     $image = $row['images']; // Use existing image if no new image is uploaded
     if (!empty($_FILES['images']['name'])) {
@@ -153,7 +163,7 @@ if (isset($_POST['editprofile'])) {
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="text" name="password" required spellcheck="false" value="<?php echo $row['password']; ?>">
+                                <input type="password" name="password" required spellcheck="false">
                                 <label class="labels">Password</label>
                             </div>
                         </div>
