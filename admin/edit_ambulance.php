@@ -20,9 +20,9 @@ if (isset($_POST["submit"])) {
 
     $vehicle_number = $_POST['vehicle_number'];
     $equipment_level = $_POST['equipment_level'];
-    $current_advance = $_POST['current_advance'];
+    $current_advance = $_POST['price_km'];
 
-    $queryys = "UPDATE ambulances SET vehicle_number = '$vehicle_number', equipment_level = '$equipment_level' , current_advance = '$current_advance' WHERE ambulance_id = '$id'";
+    $queryys = "UPDATE ambulances SET vehicle_number = '$vehicle_number', equipment_level = '$equipment_level' , price_km = '$price_km' WHERE ambulance_id = '$id'";
 
     $runn = mysqli_query($conn, $queryys);
 
@@ -60,7 +60,7 @@ include "include/head.php";
                     </div>
                     <br>
                     <div class="col-12">
-                        <input type="text" name="current_advance" class="form-control border border-white bg-dark" placeholder="Enter current advance" value="<?php echo $data['current_advance'] ?>">
+                        <input type="text" name="price_km" class="form-control border border-white bg-dark" placeholder="Enter current advance" value="<?php echo $data['price_km'] ?>">
                     </div>
                     <br>
                     <div class="col-12 d-flex">
