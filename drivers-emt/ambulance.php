@@ -26,11 +26,10 @@ include "include/head.php";
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col">ambulance id</th>
+                                <th scope="col">ambulance id</th>
                                     <th scope="col">vehicle number</th>
                                     <th scope="col">equipment level</th>
-                                    <th scope="col">current advance</th>
-
+                                    <th scope="col">Price/km</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,10 +40,10 @@ include "include/head.php";
 
                                 while ($rows = mysqli_fetch_array($runn)) {
                                 ?> <tr>
-                                        <td><?= $rows['ambulance_id'] ?></td>
+                                         <td><?= $rows['ambulance_id'] ?></td>
                                         <td><?= $rows['vehicle_number'] ?></td>
                                         <td><?= $rows['equipment_level'] ?></td>
-                                        <td><?= $rows['current_advance'] ?></td>
+                                        <td><?= $rows['price/km'] ?></td>
                                     </tr>
                                 <?php
                                 }
