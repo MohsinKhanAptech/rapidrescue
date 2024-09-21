@@ -30,15 +30,7 @@ if (isset($_POST['editprofile'])) {
     $gender = $_POST['gender'];
     $address = $_POST['address'];
 
-    $query12 = "SELECT * FROM user WHERE `user_id` = '$id";
-    $run12 = mysqli_query($conn, $query12);
-    $row12 = mysqli_fetch_assoc($run12);
-
-    if (isset($password)) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-    } else {
-        $password = $row12['password'];
-    }
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
     // Handle Image Upload
     $image = $row['images']; // Use existing image if no new image is uploaded
@@ -125,7 +117,7 @@ if (isset($_POST['editprofile'])) {
             <div class="col-md-4 m-auto">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="text-center">
-                        <img class="img-account-profile rounded-circle" src="user_images/<?php echo $row['Images']; ?>" width="220" height="220" alt="User Image">
+                        <img class="img-account-profile rounded-circle" src="user_images/<?= $row['Images']; ?>" width="220" height="220" alt="User Image">
                         <br><br>
                         <input type="file" name="images"><br><br>
                     </div>
@@ -139,37 +131,37 @@ if (isset($_POST['editprofile'])) {
                     <div class="row mt-2">
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="text" name="fname" required spellcheck="false" value="<?php echo $row['first_name']; ?>">
+                                <input type="text" name="fname" required spellcheck="false" value="<?= $row['first_name']; ?>">
                                 <label class="labels">First Name</label>
                             </div>
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="text" name="lname" required spellcheck="false" value="<?php echo $row['last_name']; ?>">
+                                <input type="text" name="lname" required spellcheck="false" value="<?= $row['last_name']; ?>">
                                 <label class="labels">Last Name</label>
                             </div>
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="email" name="email" required spellcheck="false" value="<?php echo $row['email']; ?>">
+                                <input type="email" name="email" required spellcheck="false" value="<?= $row['email']; ?>">
                                 <label class="labels">Email</label>
                             </div>
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="text" name="contact" required spellcheck="false" value="<?php echo $row['contact']; ?>">
+                                <input type="text" name="contact" required spellcheck="false" value="<?= $row['contact']; ?>">
                                 <label class="labels">Contact</label>
                             </div>
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="password" name="password" required spellcheck="false">
+                                <input type="password" name="password" required spellcheck="false" value="<?= $row['address']; ?>">
                                 <label class="labels">Password</label>
                             </div>
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="date" name="dob" required spellcheck="false" value="<?php echo $row['date_of_birth']; ?>">
+                                <input type="date" name="dob" required spellcheck="false" value="<?= $row['date_of_birth']; ?>">
                                 <label class="labels">Date of Birth</label>
                             </div>
                         </div>
@@ -185,7 +177,7 @@ if (isset($_POST['editprofile'])) {
                         </div>
                         <div class="col-md-6 my-4">
                             <div class="input-field">
-                                <input type="text" name="address" required spellcheck="false" value="<?php echo $row['address']; ?>">
+                                <input type="text" name="address" required spellcheck="false" value="<?= $row['address']; ?>">
                                 <label class="labels">Address</label>
                             </div>
                         </div>
