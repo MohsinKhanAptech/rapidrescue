@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 07:47 AM
+-- Generation Time: Sep 21, 2024 at 08:20 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -98,7 +98,8 @@ CREATE TABLE `emergency_requests` (
 
 INSERT INTO `emergency_requests` (`request_id`, `user_id`, `request_time`, `hospital_name`, `hospital_address`, `contact`, `pickup_address`, `requst_type`) VALUES
 (1, 12, '2024-09-21 04:50:07', 'jinnah', 'sadar', '03123456789', 'sadar', 'emergency'),
-(2, 12, '2024-09-21 05:26:41', 'jinnah', 'sadar', '03123456789', 'sadar', 'normal');
+(2, 12, '2024-09-21 05:26:41', 'jinnah', 'sadar', '03123456789', 'sadar', 'normal'),
+(3, 12, '2024-09-21 06:08:36', 'jinnah', 'sadar', '03123456789', 'sadar', 'emergency');
 
 -- --------------------------------------------------------
 
@@ -135,6 +136,20 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`feedback_id`, `name`, `email`, `subject`, `feedback`) VALUES
 (1, 'adnan', 'adnanabid@gmail.com', 'rapid rescue', 'exellent service');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical_profile`
+--
+
+CREATE TABLE `medical_profile` (
+  `medical_profile_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `medical_history` varchar(500) NOT NULL,
+  `allergies` varchar(255) NOT NULL,
+  `emergency_contact` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -207,6 +222,12 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_id`);
 
 --
+-- Indexes for table `medical_profile`
+--
+ALTER TABLE `medical_profile`
+  ADD KEY `fk_user_id4t535tvrgt` (`user_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -238,7 +259,7 @@ ALTER TABLE `driver`
 -- AUTO_INCREMENT for table `emergency_requests`
 --
 ALTER TABLE `emergency_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `emt`
@@ -267,6 +288,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `emergency_requests`
   ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `medical_profile`
+--
+ALTER TABLE `medical_profile`
+  ADD CONSTRAINT `fk_user_id4t535tvrgt` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
