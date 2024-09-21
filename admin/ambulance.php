@@ -44,7 +44,7 @@ include "include/head.php";
                         </div>
                         <br>
                         <div class="col-12">
-                            <input type="text" name="price/km" class="form-control border border-white bg-dark" placeholder="Enter current advance">
+                            <input type="text" name="price/km" class="form-control border border-white bg-dark" placeholder="Enter price/km">
                         </div>
                         <br>
                         <div class="col-12 d-flex">
