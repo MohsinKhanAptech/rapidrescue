@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 08:40 AM
+-- Generation Time: Sep 21, 2024 at 09:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,9 @@ CREATE TABLE `ambulances` (
   `ambulance_id` int(11) NOT NULL,
   `vehicle_number` varchar(255) NOT NULL,
   `equipment_level` varchar(255) NOT NULL,
-  `current_advance` varchar(255) NOT NULL
+  `current_advance` varchar(255) NOT NULL,
+  `longitude` decimal(10,0) NOT NULL,
+  `latitude` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -73,7 +75,7 @@ CREATE TABLE `driver` (
 --
 
 INSERT INTO `driver` (`driver_id`, `first_name`, `last_name`, `contact`, `password`) VALUES
-(1, 'saad', 'saad', '0987654321', '12345');
+(1, 'saad', 'driver', '12345', '12345');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ INSERT INTO `feedback` (`feedback_id`, `name`, `email`, `subject`, `feedback`) V
 --
 
 CREATE TABLE `medical_profile` (
-  `medical_profile_id` int(11) DEFAULT NULL,
+  `medical_profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `medical_history` varchar(500) NOT NULL,
   `allergies` varchar(255) NOT NULL,
@@ -225,6 +227,7 @@ ALTER TABLE `feedback`
 -- Indexes for table `medical_profile`
 --
 ALTER TABLE `medical_profile`
+  ADD PRIMARY KEY (`medical_profile_id`),
   ADD KEY `fk_user_id4t535tvrgt` (`user_id`);
 
 --
@@ -272,6 +275,12 @@ ALTER TABLE `emt`
 --
 ALTER TABLE `feedback`
   MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `medical_profile`
+--
+ALTER TABLE `medical_profile`
+  MODIFY `medical_profile_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
