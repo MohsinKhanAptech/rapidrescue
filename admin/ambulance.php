@@ -20,8 +20,8 @@ include "include/head.php";
             if (isset($_POST['submit'])) {
                 $vehicle_number = $_POST['vehicle_number'];
                 $equipment_level = $_POST['equipment_level'];
-                $current_advance = $_POST['price/km'];
-                $query = "INSERT INTO ambulances (vehicle_number, equipment_level, price/km) VALUES ('$vehicle_number', '$equipment_level', '$current_advance')";
+                $price_km = $_POST['price_km'];
+                $query = "INSERT INTO ambulances (vehicle_number, equipment_level, price_km) VALUES ('$vehicle_number', '$equipment_level', '$price_km')";
                 $run = mysqli_query($conn, $query);
 
                 if ($run) {
@@ -44,7 +44,7 @@ include "include/head.php";
                         </div>
                         <br>
                         <div class="col-12">
-                            <input type="text" name="price/km" class="form-control border border-white bg-dark" placeholder="Enter price/km">
+                            <input type="text" name="price_km" class="form-control border border-white bg-dark" placeholder="Enter price/km">
                         </div>
                         <br>
                         <div class="col-12 d-flex">
@@ -79,7 +79,7 @@ include "include/head.php";
                                         <td><?= $rows['ambulance_id'] ?></td>
                                         <td><?= $rows['vehicle_number'] ?></td>
                                         <td><?= $rows['equipment_level'] ?></td>
-                                        <td><?= $rows['price/km'] ?></td>
+                                        <td><?= $rows['price_km'] ?></td>
                                         <td>
                                             <a class="btn btn-sm btn-primary" href="delete_ambulance.php?id=<?= $rows['ambulance_id'] ?> " onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
                                             <a class="btn btn-sm btn-primary" href="edit_ambulance.php?id=<?= $rows['ambulance_id'] ?>">Edit</a>
