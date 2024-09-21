@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 11:29 AM
+-- Generation Time: Sep 21, 2024 at 12:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -73,9 +73,18 @@ CREATE TABLE `chat` (
   `chat_id` int(11) NOT NULL,
   `admin_id` int(11) DEFAULT NULL,
   `driver_id` int(11) DEFAULT NULL,
+  `sender` varchar(255) NOT NULL,
   `chat` text DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`chat_id`, `admin_id`, `driver_id`, `sender`, `chat`, `timestamp`) VALUES
+(1, 1, 1, 'admin', 'hello', '2024-09-21 10:06:40'),
+(2, 1, 1, 'admin', 'hii', '2024-09-21 10:07:01');
 
 -- --------------------------------------------------------
 
@@ -111,7 +120,7 @@ CREATE TABLE `driver` (
 --
 
 INSERT INTO `driver` (`driver_id`, `first_name`, `last_name`, `contact`, `ambulance_id`, `password`) VALUES
-(1, 'saad', 'driver1', '03001234567', 1, 'driver');
+(1, 'saad', 'driver', '03001234567', 1, 'driver');
 
 -- --------------------------------------------------------
 
@@ -145,6 +154,13 @@ CREATE TABLE `emt` (
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `emt`
+--
+
+INSERT INTO `emt` (`EMT_id`, `first_name`, `last_name`, `certificate`, `contact`, `email`) VALUES
+(1, 'ahmed', 'khan', 'certificate.png', '03123456700', 'emt@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -165,7 +181,7 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`feedback_id`, `name`, `email`, `subject`, `feedback`) VALUES
 (1, 'adnan', 'adnanabid@gmail.com', 'rapid rescue', 'exellent service'),
-(2, 'saad', 's@gmail.com', 'rapid rescue', 'good work');
+(2, 'saad', 'saad@gmail.com', 'rapid rescue', 'good work');
 
 -- --------------------------------------------------------
 
@@ -205,7 +221,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact`, `password`, `date_of_birth`, `gender`, `address`, `Images`) VALUES
-(1, 'Ali', 'ahmed', 'user1@gmail.com', '03001234567', 'user123', '2024-09-21', 'male', '123 house, 123 street', 'user1.jpg');
+(1, 'ali', 'ahmed', 'user1@gmail.com', '03001234567', '$2y$10$Lemx4B6KzTl6BMj8YW4msexhBlJcWwbZql7VbeY8ROYURGAMlANOO', '2024-09-21', 'male', '123 house, 123 street ', 'images.png');
 
 --
 -- Indexes for dumped tables
@@ -296,7 +312,7 @@ ALTER TABLE `ambulances`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -308,7 +324,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `driver`
 --
 ALTER TABLE `driver`
-  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `emergency_requests`
@@ -320,7 +336,7 @@ ALTER TABLE `emergency_requests`
 -- AUTO_INCREMENT for table `emt`
 --
 ALTER TABLE `emt`
-  MODIFY `EMT_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EMT_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -338,7 +354,7 @@ ALTER TABLE `medical_profile`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -367,7 +383,7 @@ ALTER TABLE `emergency_requests`
 -- Constraints for table `medical_profile`
 --
 ALTER TABLE `medical_profile`
-  ADD CONSTRAINT `fk_user_id4t535tvrgt` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `fk_user_id4t535tvrgt` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
