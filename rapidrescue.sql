@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 10:25 AM
+-- Generation Time: Sep 21, 2024 at 10:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,7 @@ CREATE TABLE `ambulances` (
   `ambulance_id` int(11) NOT NULL,
   `vehicle_number` varchar(255) NOT NULL,
   `equipment_level` varchar(255) NOT NULL,
-  `current_advance` varchar(255) NOT NULL,
+  `price/km` double NOT NULL,
   `longitude` decimal(10,0) NOT NULL,
   `latitude` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -84,13 +84,6 @@ CREATE TABLE `contact` (
   `message` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`contact_id`, `name`, `email`, `subject`, `message`) VALUES
-(1, 'gj', 'jg@gmail.com', 'hg', 'gh');
-
 -- --------------------------------------------------------
 
 --
@@ -122,15 +115,6 @@ CREATE TABLE `emergency_requests` (
   `pickup_address` varchar(255) NOT NULL,
   `request_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `emergency_requests`
---
-
-INSERT INTO `emergency_requests` (`request_id`, `user_id`, `request_time`, `hospital_name`, `hospital_address`, `contact`, `pickup_address`, `request_type`) VALUES
-(1, 12, '2024-09-21 04:50:07', 'jinnah', 'sadar', '03123456789', 'sadar', 'emergency'),
-(2, 12, '2024-09-21 05:26:41', 'jinnah', 'sadar', '03123456789', 'sadar', 'normal'),
-(3, 12, '2024-09-21 06:08:36', 'jinnah', 'sadar', '03123456789', 'sadar', 'emergency');
 
 -- --------------------------------------------------------
 
@@ -206,10 +190,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact`, `password`, `date_of_birth`, `gender`, `address`, `Images`) VALUES
-(4, 'bilal', 'bilal', 'bilal@gmail.com', '03131234567', '123', '2024-09-19', 'male', '123', ''),
-(5, 'adnan', 'abid', 'adnanabid@gmail.com', '032171733302', '$2y$10$WTgHHuW0v5a4ucVYwcgcKOnx3kwQoWGAx0.bw6vGFMPLe.ZAZKu4u', '2024-09-20', 'male', 'karachi', ''),
-(11, 'mohsin', 'khan', 'mohsin@gmail.com', '09173969', '$2y$10$jmpnKVgY73yM4astz4XQyeOvOBTNT/QhW.Hsbs2KWl8epgS4l7aoq', '2024-09-20', 'Male', 'karachi', 'download.jfif'),
-(12, 'mohsin', 'khan', 'm@gmail.com', '03123456789', '$2y$10$pbJ9GGrwbfO4pyg74J09puwbUWzv9XnmZHOIp7IV7TCEKeWXzUNYO', '2024-09-24', 'Male', 'abc', 'laravel command.PNG');
+(1, 'Ali', 'ahmed', 'user1@gmail.com', '03001234567', 'user123', '2024-09-21', 'male', '123 house, 123 street', 'user1.jpg');
 
 --
 -- Indexes for dumped tables
@@ -352,8 +333,8 @@ ALTER TABLE `user`
 -- Constraints for table `chat`
 --
 ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`);
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `driver`
