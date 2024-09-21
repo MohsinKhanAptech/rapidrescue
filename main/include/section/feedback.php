@@ -1,3 +1,4 @@
+
 <?php
 include '../conn.php';
 
@@ -15,6 +16,8 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
+
 <!-- Feedback Start -->
 <div class="container-fluid bg-primary my-5 py-5">
     <div class="container py-5">
@@ -24,7 +27,51 @@ if (isset($_POST['submit'])) {
                     <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Feedback</h5>
                     <h1 class="display-4">Provide Feedback</h1>
                 </div>
-                <p class="text-white mb-5">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
+                <div class="container mt-5 ">
+        <div id="carouselExampleIndicators" class="carousel slide rounded" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <?php
+                
+
+                $query = "SELECT * FROM feedback"; 
+                $runn = mysqli_query($conn, $query);
+                $active = true;
+
+                while ($rows = mysqli_fetch_array($runn)) {
+                    ?>
+                    <div class="carousel-item <?= $active ? 'active' : '' ?>">
+                        <div class="d-flex justify-content-center align-items-center bg-white" style="height: 180px;"> 
+                            <div class="text-center">
+                            <div class="feedback-author">
+                                    <strong><?= $rows['name'] ?></strong>
+                                </div>
+                                
+                                <p class="feedback-text"><?= $rows['feedback'] ?></p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    $active = false; 
+                }
+                ?>
+            </div>
+            <a class="carousel-control-prev bg-primary" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next bg-primary" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
             </div>
             <div class="col-lg-6">
                 <div class="bg-white text-center rounded p-5">
@@ -53,5 +100,7 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Feedback End -->
