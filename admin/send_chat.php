@@ -1,20 +1,20 @@
 <?php
+include("require_signin.php");
 include("../conn.php");
 
-try {
-    // Check if the POST request contains the required data
-    if (isset($_POST['message'])) {
-        $admin_id = $_SESSION['admin_id'];
-        $message = $_POST['message'];
+if (isset($_POST["submit"])) {
+    $admin_id = $_SESSION['admin_id'];
+    $driver_id = $_POST['driver_id'];
+    $chat = $_POST['chat'];
 
-        // Insert the chat message into the database
-        $query = "INSERT INTO chat (admin_id, driver_id, chat) VALUES ($admin_id, $driver_id, $message)";
-        $run = mysqli_query($con, $query);
-        // Return success response
-        echo json_encode(['status' => 'success', 'message' => 'Message sent']);
+    // Insert the chat message into the database
+    $query = "INSERT INTO chat (admin_id, driver_id, sender, chat) VALUES ('$admin_id', '$driver_id', 'admin', '$chat')";
+    $run = mysqli_query($conn, $query);
+
+    if ($run) {
+        header('location:chat.php');
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Invalid input']);
+        echo "<script>alert('Something went wrong please retry!')</script>";
+        echo "<script>window.location.href='chat.php'</script>";
     }
-} catch (PDOException $e) {
-    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
 }

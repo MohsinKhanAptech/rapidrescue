@@ -4,6 +4,9 @@
 <?php
 include "../conn.php";
 include "include/head.php";
+
+$query = 'SELECT * FROM ambulances';
+$run = mysqli_query($conn, $query);
 ?>
 
 <body>
@@ -22,7 +25,9 @@ include "include/head.php";
                 $first_name = $_POST['first_name'];
                 $last_name = $_POST['last_name'];
                 $contact = $_POST['contact'];
-                $query = "INSERT INTO driver (first_name, last_name, contact) VALUES ('$first_name', '$last_name', '$contact')";
+                $ambulance_id = $_POST['ambulance_id'];
+                $query = "INSERT INTO driver (first_name, last_name, contact, ambulance_id)
+                VALUES ('$first_name', '$last_name', '$contact', '$ambulance_id')";
                 $run = mysqli_query($conn, $query);
 
                 if ($run) {
@@ -44,6 +49,14 @@ include "include/head.php";
                         <br>
                         <div class="col-12">
                             <input type="text" name="contact" class="form-control border border-white bg-dark" placeholder="Enter contact">
+                        </div>
+                        <br>
+                        <div class="col-12">
+                            <select class="form-select border border-white bg-dark" name="ambulance_id">
+                                <?php while ($rows = mysqli_fetch_array($run)) { ?>
+                                    <option value="<?= $rows['ambulance_id'] ?>"><?= $rows['vehicle_number'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <br>
                         <div class="col-12 d-flex">

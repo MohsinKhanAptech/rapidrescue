@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 10:42 AM
+-- Generation Time: Sep 21, 2024 at 11:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,6 +56,13 @@ CREATE TABLE `ambulances` (
   `latitude` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ambulances`
+--
+
+INSERT INTO `ambulances` (`ambulance_id`, `vehicle_number`, `equipment_level`, `price/km`, `longitude`, `latitude`) VALUES
+(1, 'abc-123', 'oxygen tank ', 1500, 25, 67);
+
 -- --------------------------------------------------------
 
 --
@@ -98,6 +105,13 @@ CREATE TABLE `driver` (
   `ambulance_id` int(11) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `driver`
+--
+
+INSERT INTO `driver` (`driver_id`, `first_name`, `last_name`, `contact`, `ambulance_id`, `password`) VALUES
+(1, 'saad', 'driver1', '03001234567', 1, 'driver');
 
 -- --------------------------------------------------------
 
@@ -150,7 +164,8 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_id`, `name`, `email`, `subject`, `feedback`) VALUES
-(1, 'adnan', 'adnanabid@gmail.com', 'rapid rescue', 'exellent service');
+(1, 'adnan', 'adnanabid@gmail.com', 'rapid rescue', 'exellent service'),
+(2, 'saad', 's@gmail.com', 'rapid rescue', 'good work');
 
 -- --------------------------------------------------------
 
@@ -275,7 +290,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `ambulances`
 --
 ALTER TABLE `ambulances`
-  MODIFY `ambulance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ambulance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -293,7 +308,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `driver`
 --
 ALTER TABLE `driver`
-  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `emergency_requests`
@@ -311,7 +326,7 @@ ALTER TABLE `emt`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `medical_profile`
