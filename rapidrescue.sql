@@ -51,7 +51,7 @@ CREATE TABLE `ambulances` (
   `ambulance_id` int(11) NOT NULL,
   `vehicle_number` varchar(255) NOT NULL,
   `equipment_level` varchar(255) NOT NULL,
-  `price/km` double NOT NULL,
+  `price_km` double NOT NULL,
   `longitude` decimal(10,0) NOT NULL,
   `latitude` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -60,7 +60,7 @@ CREATE TABLE `ambulances` (
 -- Dumping data for table `ambulances`
 --
 
-INSERT INTO `ambulances` (`ambulance_id`, `vehicle_number`, `equipment_level`, `price/km`, `longitude`, `latitude`) VALUES
+INSERT INTO `ambulances` (`ambulance_id`, `vehicle_number`, `equipment_level`, `price_km`, `longitude`, `latitude`) VALUES
 (1, 'abc-123', 'oxygen tank ', 1500, 25, 67);
 
 -- --------------------------------------------------------
