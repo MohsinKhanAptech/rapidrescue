@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_array($run);
 
     if (mysqli_num_rows($run) === 1) {
+        $_SESSION['admin_id'] = $row['admin_id'];
         $_SESSION['admin_name'] = $row['name'];
         $_SESSION['admin_email'] = $row['email'];
         echo '<scrpit>alert("Record Submitted!")</script>';
