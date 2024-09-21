@@ -4,6 +4,18 @@
 <?php
 include 'require_signin.php';
 include 'include/head.php';
+include '../conn.php';
+
+$user_id = $_SESSION['user_id'];
+
+$query = "SELECT * FROM `medical_profile` WHERE `user_id` = '$user_id'";
+$run = mysqli_query($conn,$query );
+$row = mysqli_fetch_array($run);
+
+if (mysqli_num_rows($run) === 0) {
+    header("location:medical_profile.php");
+}
+
 ?>
 
 <body>
@@ -35,7 +47,7 @@ include 'include/head.php';
 									</select>
 								</div>
 								<div class="col-12">
-									<input type="submit" name="submit" value="Signin" class="btn btn-primary w-100 py-2">
+									<input type="submit" name="submit" value="Request" class="btn btn-primary w-100 py-2">
 								</div>
 								<div class="col-12">
 									<input type="button" onclick="window.location.href='index.php'" class="btn btn-light w-100 py-2" value="Cancel">
