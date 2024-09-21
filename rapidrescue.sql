@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 10:09 AM
+-- Generation Time: Sep 21, 2024 at 10:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,13 +56,6 @@ CREATE TABLE `ambulances` (
   `latitude` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `ambulances`
---
-
-INSERT INTO `ambulances` (`ambulance_id`, `vehicle_number`, `equipment_level`, `current_advance`, `longitude`, `latitude`) VALUES
-(1, 'test', 'test', 'test', 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -112,13 +105,6 @@ CREATE TABLE `driver` (
   `ambulance_id` int(11) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `driver`
---
-
-INSERT INTO `driver` (`driver_id`, `first_name`, `last_name`, `contact`, `ambulance_id`, `password`) VALUES
-(1, 'saad', 'driver', '12345', 0, '12345');
 
 -- --------------------------------------------------------
 
@@ -259,7 +245,8 @@ ALTER TABLE `contact`
 -- Indexes for table `driver`
 --
 ALTER TABLE `driver`
-  ADD PRIMARY KEY (`driver_id`);
+  ADD PRIMARY KEY (`driver_id`),
+  ADD KEY `idkplesasehelp` (`ambulance_id`);
 
 --
 -- Indexes for table `emergency_requests`
@@ -367,6 +354,12 @@ ALTER TABLE `user`
 ALTER TABLE `chat`
   ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`),
   ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`);
+
+--
+-- Constraints for table `driver`
+--
+ALTER TABLE `driver`
+  ADD CONSTRAINT `idkplesasehelp` FOREIGN KEY (`ambulance_id`) REFERENCES `ambulances` (`ambulance_id`);
 
 --
 -- Constraints for table `emergency_requests`
