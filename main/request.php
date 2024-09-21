@@ -4,6 +4,18 @@
 <?php
 include 'require_signin.php';
 include 'include/head.php';
+include '../conn.php';
+
+$user_id = $_SESSION['user_id'];
+
+$query = "SELECT * FROM `medical_profile` WHERE `user_id` = '$user_id'";
+$run = mysqli_query($conn,$query );
+$row = mysqli_fetch_array($run);
+
+if (mysqli_num_rows($run) === 0) {
+    header("location:medical_profile.php");
+}
+
 ?>
 
 <body>
