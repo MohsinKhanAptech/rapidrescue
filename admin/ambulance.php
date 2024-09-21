@@ -20,7 +20,7 @@ include "include/head.php";
             if (isset($_POST['submit'])) {
                 $vehicle_number = $_POST['vehicle_number'];
                 $equipment_level = $_POST['equipment_level'];
-                $current_advance = $_POST['current_advance'];
+                $current_advance = $_POST['price/km'];
                 $query = "INSERT INTO ambulances (vehicle_number, equipment_level, current_advance) VALUES ('$vehicle_number', '$equipment_level', '$current_advance')";
                 $run = mysqli_query($conn, $query);
 
@@ -44,7 +44,7 @@ include "include/head.php";
                         </div>
                         <br>
                         <div class="col-12">
-                            <input type="text" name="current_advance" class="form-control border border-white bg-dark" placeholder="Enter current advance">
+                            <input type="text" name="price/km" class="form-control border border-white bg-dark" placeholder="Enter current advance">
                         </div>
                         <br>
                         <div class="col-12 d-flex">
@@ -64,7 +64,7 @@ include "include/head.php";
                                     <th scope="col">ambulance id</th>
                                     <th scope="col">vehicle number</th>
                                     <th scope="col">equipment level</th>
-                                    <th scope="col">current advance</th>
+                                    <th scope="col">Price/km</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -79,7 +79,7 @@ include "include/head.php";
                                         <td><?= $rows['ambulance_id'] ?></td>
                                         <td><?= $rows['vehicle_number'] ?></td>
                                         <td><?= $rows['equipment_level'] ?></td>
-                                        <td><?= $rows['current_advance'] ?></td>
+                                        <td><?= $rows['price/km'] ?></td>
                                         <td>
                                             <a class="btn btn-sm btn-primary" href="delete_ambulance.php?id=<?= $rows['ambulance_id'] ?> " onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
                                             <a class="btn btn-sm btn-primary" href="edit_ambulance.php?id=<?= $rows['ambulance_id'] ?>">Edit</a>
